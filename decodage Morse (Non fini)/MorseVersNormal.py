@@ -1,10 +1,39 @@
 #class inventaire:
 #	def __init__(self, phrase):
 #		self.phrase = phrase
+morseAlphabet ={
+    "A" : ".-",
+    "B" : "-...",
+    "C" : "-.-.",
+    "D" : "-..",
+    "E" : ".",
+    "F" : "..-.",
+    "G" : "--.",
+    "H" : "....",
+    "I" : "..",
+    "J" : ".---",
+    "K" : "-.-",
+    "L" : ".-..",
+    "M" : "--",
+    "N" : "-.",
+    "O" : "---",
+    "P" : ".--.",
+    "Q" : "--.-",
+    "R" : ".-.",
+    "S" : "...",
+    "T" : "-",
+    "U" : "..-",
+    "V" : "...-",
+    "W" : ".--",
+    "X" : "-..-",
+    "Y" : "-.--",
+    "Z" : "--.."
+    }
 compte = 0		
 passagerie = {}
 NombreDeCaractere = {}
-
+DebutPhrase = {}
+Phrase = {}
 		
 def passage(n):
 	if ".-" == symbole:
@@ -88,8 +117,9 @@ def passage(n):
 	else:
 		return
 		
-#	print(lettre)
-	return attributionPassage(n, lettre)
+	AttributionTaille(lettre)	
+#	print(lettre)Mark Morrison
+	return AttributionPassage(n, lettre)
 	
 def AttributionPassage(param1, param2):
 	try:
@@ -97,10 +127,37 @@ def AttributionPassage(param1, param2):
 	except KeyError:
 		passagerie['PASSAGE '+ str(param1)] = [param2]
 	return
+	
+def CreationPremiereLettre(h = 1):
+	for item in passagerie['PASSAGE '+ "1"]:
+		DebutPhrase["PremiereLettre "+ str(h)] = [item]
+		h += 1
 		
-def AttributionTaille():
+def AttributionTaille(n):
 	try:
-		NombreDeCaractere['Taille  ']
+		if n not in NombreDeCaractere['Taille  '+ str(len(symbole))]: 
+			NombreDeCaractere['Taille  '+ str(len(symbole))].append(n)
+		else:
+			pass
+	except KeyError:
+		NombreDeCaractere['Taille  '+ str(len(symbole))] = [n]
+	return
+	
+
+def Classement(positionInLib = 1):
+	for tour in range(1, len(passagerie)+1):
+		for item in passagerie['PASSAGE '+ str(tour)]:
+			for indice in range(0, len(passagerie['PASSAGE '+ str(positionInLib)])):
+	       		if item in NombreDeCaractere['Taille  '+ str(indice)]:
+		      		try:
+						Phrase["Phrase "+ str(h)].append(item)
+					except KeyError:
+						Phrase["Phrase "+ str(h)] = DebutPhrase["PremiereLettre "+ str(o)]
+						
+				if len(morseAlphabet[item])
+					
+	return
+	
 #def attribution(param1, param2):
 #	if param1 in liste1:
 #		rangement1.append(param2)
@@ -113,16 +170,16 @@ def AttributionTaille():
 #
 #	return 
 
-def rangement(n):
-	for t in range(1, n+1, 4):
-		liste1.append(t)
-	for t in range(2, n+1, 4):
-		liste2.append(t)
-	for t in range(3, n+1, 4):
-		liste3.append(t)
-	for t in range(4, n+1, 4):
-		liste4.append(t)
-	return
+#def rangement(n):
+#	for t in range(1, n+1, 4):
+#		liste1.append(t)
+#	for t in range(2, n+1, 4):
+#		liste2.append(t)
+#	for t in range(3, n+1, 4):
+#		liste3.append(t)
+#	for t in range(4, n+1, 4):
+#		liste4.append(t)
+#	return
 
 #def CreationPhrase(n):
 ##	tour = 0
@@ -141,18 +198,18 @@ enter = input("< ")
 message = list(enter)
 message2 = message.copy()
 CreationSymbole = []
-liste1 = []
-liste2 = []
-liste3 = []
-liste4 = []
-rangement1 = []
-rangement2 = []
-rangement3 = []
-rangement4 = []
-phrase = []
+#liste1 = []
+#liste2 = []
+#liste3 = []
+#liste4 = []
+#rangement1 = []
+#rangement2 = []
+#rangement3 = []
+#rangement4 = []
+#phrase = []
 k = 1
 print(list(enter))
-rangement(len(message))
+#rangement(len(message))
 while k != len(list(enter))+1:
 #	print("PASSAGE N°", k)
 	for i in range(len(message)):
@@ -163,8 +220,12 @@ while k != len(list(enter))+1:
 	CreationSymbole = []
 	del message[0]
 	k += 1
+CreationPremiereLettre()
+Classement()
 
 print(passagerie)
+print("\n", NombreDeCaractere)
+print("\n", Phrase)
 #CreationPhrase(len(message2))
 #print(possibilite)		
 #print(liste1)
