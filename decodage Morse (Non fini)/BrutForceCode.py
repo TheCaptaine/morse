@@ -1,21 +1,21 @@
-your_list = 'abaa'
+Enter = 'abaa'
 lib = {"a" : 1, "b" : 2}
-complete_list = []
+List_De_Passage = []
 liste = []
 
-for current in list(range(2**(len(your_list)-1))):
-	a = [i for i in your_list]
+for current in list(range(2**(len(Enter)-1))):
+	a = [i for i in Enter]
 	for y in list(range(current)):
-		a = list(set([x+i for i in your_list for x in a]))
-	complete_list += a
+		a = list(set([x+i for i in Enter for x in a]))
+	List_De_Passage += a
 	
-for item in range(len(complete_list)):
+for item in range(len(List_De_Passage)):
 	compte = 0
-	for item2 in complete_list[item]:
+	for item2 in List_De_Passage[item]:
 		compte += lib[item2]
-	if compte <= 4 and complete_list[item] not in liste:
-			liste.append(complete_list[item])
+	if compte <= 4 and List_De_Passage[item] not in liste:
+			liste.append(List_De_Passage[item])
 	else:
 		pass
-print(complete_list, "\n\n")
+print(List_De_Passage, "\n\n")
 print(liste)
